@@ -7,5 +7,5 @@ Feature: Add To Cart Feature
     Then cart item count should increase
     Examples:
       | Product	|
-      | phone		|   
-      | laptop	| 
+      | redmi 10 pro	|   
+      | lenovo laptop	|
