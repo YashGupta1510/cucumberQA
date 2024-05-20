@@ -1,0 +1,225 @@
+Started by user Yash Gupta
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Starting)
+[Pipeline] echo
+Started pipeline
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (git)
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/YashGupta1510/cucumberQA.git
+ > git.exe init C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline # timeout=10
+Fetching upstream changes from https://github.com/YashGupta1510/cucumberQA.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.40.1.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/YashGupta1510/cucumberQA.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe config remote.origin.url https://github.com/YashGupta1510/cucumberQA.git # timeout=10
+ > git.exe config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision 1df2f3161569fb6d8c9d02fbda6215858f2f463a (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 1df2f3161569fb6d8c9d02fbda6215858f2f463a # timeout=10
+ > git.exe branch -a -v --no-abbrev # timeout=10
+ > git.exe checkout -b main 1df2f3161569fb6d8c9d02fbda6215858f2f463a # timeout=10
+Commit message: "updated jenkins file"
+ > git.exe rev-list --no-walk 6e8e7a4e02cd2a6e2af938373d3228d44109e686 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (setup)
+[Pipeline] bat
+
+C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline>mvn clean 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.nagarro:cucumberDemo >----------------------
+[INFO] Building cucumberDemo 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ cucumberDemo ---
+[INFO] Deleting C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.418 s
+[INFO] Finished at: 2024-05-20T14:12:55+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (test)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] bat
+
+C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline>mvn test 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.nagarro:cucumberDemo >----------------------
+[INFO] Building cucumberDemo 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ cucumberDemo ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\src\main\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ cucumberDemo ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
+[INFO] Compiling 3 source files to C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ cucumberDemo ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ cucumberDemo ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
+[INFO] Compiling 5 source files to C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\target\test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ cucumberDemo ---
+[INFO] Using configured provider org.apache.maven.surefire.junitcore.JUnitCoreProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running Add To Cart Feature
+
+Scenario Outline: add to cart success     # src/test/java/Features/AddToCartFeature.feature:10
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+May 20, 2024 2:13:10 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 125, returning the closest version; found: 121; Please update to a Selenium version that supports CDP version 125
+  Given user is on homepage               # StepDefinitions.AddToCartSteps.user_is_on_homepage()
+  And user searched for "redmi 10 pro"    # StepDefinitions.AddToCartSteps.user_searched_for(java.lang.String)
+  When user clicked on add to cart button # StepDefinitions.AddToCartSteps.user_clicked_on_add_to_cart_button()
+  Then cart item count should increase    # StepDefinitions.AddToCartSteps.cart_item_count_should_increase()
+
+Scenario Outline: add to cart success     # src/test/java/Features/AddToCartFeature.feature:11
+May 20, 2024 2:13:23 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 125, returning the closest version; found: 121; Please update to a Selenium version that supports CDP version 125
+  Given user is on homepage               # StepDefinitions.AddToCartSteps.user_is_on_homepage()
+  And user searched for "lenovo laptop"   # StepDefinitions.AddToCartSteps.user_searched_for(java.lang.String)
+  When user clicked on add to cart button # StepDefinitions.AddToCartSteps.user_clicked_on_add_to_cart_button()
+  Then cart item count should increase    # StepDefinitions.AddToCartSteps.cart_item_count_should_increase()
+
+Scenario Outline: Valid Login              # src/test/java/Features/LoginFeature.feature:12
+May 20, 2024 2:13:32 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 125, returning the closest version; found: 121; Please update to a Selenium version that supports CDP version 125
+  Given user is on Login Page              # StepDefinitions.LoginSteps.user_is_on_login_page()
+  When user enter username "test@test.com" # StepDefinitions.LoginSteps.user_enter_username(java.lang.String)
+  When user enter password "pwdpwdpwd"     # StepDefinitions.LoginSteps.user_enter_password(java.lang.String)
+  Then user moves to solve page            # StepDefinitions.LoginSteps.user_moves_to_solve_page()
+
+Scenario Outline: Valid Login               # src/test/java/Features/LoginFeature.feature:13
+May 20, 2024 2:13:45 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 125, returning the closest version; found: 121; Please update to a Selenium version that supports CDP version 125
+  Given user is on Login Page               # StepDefinitions.LoginSteps.user_is_on_login_page()
+  When user enter username "test2@test.com" # StepDefinitions.LoginSteps.user_enter_username(java.lang.String)
+  When user enter password "pwspwpspws"     # StepDefinitions.LoginSteps.user_enter_password(java.lang.String)
+  Then user moves to solve page             # StepDefinitions.LoginSteps.user_moves_to_solve_page()
+
+Scenario Outline: Invalid Login           # src/test/java/Features/LoginFeature.feature:21
+May 20, 2024 2:13:55 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 125, returning the closest version; found: 121; Please update to a Selenium version that supports CDP version 125
+  Given user is on Login Page             # StepDefinitions.LoginSteps.user_is_on_login_page()
+  When user enter username "testtest.com" # StepDefinitions.LoginSteps.user_enter_username(java.lang.String)
+  Then user gets error                    # StepDefinitions.LoginSteps.user_gets_error()
+
+Scenario Outline: Invalid Login         # src/test/java/Features/LoginFeature.feature:22
+May 20, 2024 2:14:08 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 125, returning the closest version; found: 121; Please update to a Selenium version that supports CDP version 125
+  Given user is on Login Page           # StepDefinitions.LoginSteps.user_is_on_login_page()
+  When user enter username "test2@test" # StepDefinitions.LoginSteps.user_enter_username(java.lang.String)
+  Then user gets error                  # StepDefinitions.LoginSteps.user_gets_error()
+????????????????????????????????????????????????????????????????????????????
+? View your Cucumber Report at:                                            ?
+? https://reports.cucumber.io/reports/305ae0be-6ae7-4418-8f4d-1120f88d43f8 ?
+?                                                                          ?
+? This report will self-destruct in 24h.                                   ?
+? Keep reports forever: https://reports.cucumber.io/profile                ?
+????????????????????????????????????????????????????????????????????????????[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 71.61 s -- in Login Functionality
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:22 min
+[INFO] Finished at: 2024-05-20T14:14:19+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Building)
+[Pipeline] bat
+
+C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline>mvn clean install -Dmaven.test.skip=true 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.nagarro:cucumberDemo >----------------------
+[INFO] Building cucumberDemo 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ cucumberDemo ---
+[INFO] Deleting C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ cucumberDemo ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\src\main\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:compile (default-compile) @ cucumberDemo ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
+[INFO] Compiling 3 source files to C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ cucumberDemo ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.10.1:testCompile (default-testCompile) @ cucumberDemo ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ cucumberDemo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ cucumberDemo ---
+[INFO] Building jar: C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\target\cucumberDemo-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ cucumberDemo ---
+[INFO] Installing C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\target\cucumberDemo-0.0.1-SNAPSHOT.jar to C:\Users\yashgupta02\.m2\repository\com\nagarro\cucumberDemo\0.0.1-SNAPSHOT\cucumberDemo-0.0.1-SNAPSHOT.jar
+[INFO] Installing C:\Users\yashgupta02\.jenkins\workspace\CucumberPipeline\pom.xml to C:\Users\yashgupta02\.m2\repository\com\nagarro\cucumberDemo\0.0.1-SNAPSHOT\cucumberDemo-0.0.1-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.413 s
+[INFO] Finished at: 2024-05-20T14:14:26+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
