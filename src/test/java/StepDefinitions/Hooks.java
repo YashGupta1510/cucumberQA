@@ -1,6 +1,7 @@
 package StepDefinitions;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -11,7 +12,11 @@ public class Hooks extends BaseClass{
 	
 	@Before
 	public void setup() {
-		driver = WebDriverManager.chromedriver().create();
+		ChromeOptions opt = new ChromeOptions();
+	
+			opt.addArguments("--headless");
+		
+		driver = WebDriverManager.chromedriver().capabilities(opt).create();
 		driver.manage().window().maximize();
 		driver.get("https://www.amazon.in");
 	}
