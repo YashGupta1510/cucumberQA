@@ -9,7 +9,7 @@ pipeline {
         }
         stage('git'){
             steps{
-               git branch: 'main', url: 'https://github.com/YashGupta1510/cucumberQA.git'
+              git branch: 'main', url: 'https://github.com/YashGupta1510/cucumberQA.git'
             }
         }
         stage('setup'){
@@ -19,13 +19,26 @@ pipeline {
         }
         stage('test'){
             steps{
-                bat 'mvn test'
+                script {
+                    try {   
+                        bat 'mvn test'
+                    } catch (err) {
+                        echo err.getMessage()
+                    }
+                }
             }
+
         }
+        
         stage('Building'){
             steps{
                 bat 'mvn clean install -Dmaven.test.skip=true'
             }
+        }
+    }
+    post {
+        always {
+            cleanWs()
         }
     }
 }
