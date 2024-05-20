@@ -1,9 +1,13 @@
-# cucumberQA
+# CucumberQA
 # Jenkins Pipeline Script
 
 ## Overview
 
 The pipeline is defined using the `pipeline` block, indicating the start of the pipeline script. It is configured to run on any available agent (`agent any`), meaning it can run on any available executor.
+
+## Poll SCM
+
+Poll SCM is a Jenkins feature that checks the source code repository at specified intervals to see if there have been any changes. If changes are detected, a new build is triggered. This is useful for integrating continuous integration practices, ensuring that the latest code changes are automatically built and tested.
 
 ## Stages
 
@@ -32,5 +36,4 @@ The pipeline is defined using the `pipeline` block, indicating the start of the 
 The `post` block defines actions that will be executed after the stages. In this case:
 - The `always` block ensures that the specified actions are executed regardless of the pipeline result.
 - The `cleanWs()` function cleans the workspace.
-- The `dir()` function is used to navigate to specific directories within the workspace and delete them
 
