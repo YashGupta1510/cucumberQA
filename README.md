@@ -32,5 +32,5 @@ The pipeline is defined using the `pipeline` block, indicating the start of the 
 The `post` block defines actions that will be executed after the stages. In this case:
 - The `always` block ensures that the specified actions are executed regardless of the pipeline result.
 - The `cleanWs()` function cleans the workspace.
-- The `dir()` function is used to navigate to specific directories within the workspace and delete them.
+- The `dir()` function is used to navigate to specific directories within the workspace and delete them
 
